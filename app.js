@@ -4,16 +4,16 @@ const app = express();
 const http = require("http");
 const https = require("https");
 const path = require("path");
-//const fs = require("fs");
+const fs = require("fs");
 const socketio = require("socket.io");
 
-/* const httpsOptions = {
+const httpsOptions = {
     key: fs.readFileSync("server.key"),
     cert: fs.readFileSync("server.cert"),
-}; */
+};
     
-//const server = https.createServer(httpsOptions, app);
-const server = http.createServer(app);
+const server = https.createServer(httpsOptions, app);
+//const server = http.createServer(app);
 const io = socketio(server);
 app.use(
     helmet({
